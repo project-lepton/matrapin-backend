@@ -1,0 +1,16 @@
+name: Keep Render API Active
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping API
+        run: |
+          curl -X POST "https://matrapin-backend.onrender.com/generate" \
+          -H "Content-Type: application/json" \
+          -d '{"text": "kagaja", "language": "odia"}' \
+          || echo "Ping failed"
