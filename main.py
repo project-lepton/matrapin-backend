@@ -1,10 +1,20 @@
 import os
 import json
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from indic_transliteration import sanscript
 from indic_transliteration.sanscript import transliterate
 
 app = Flask(__name__)
+
+CORS(app, resources={
+    r"/generate": {
+        "origins": [
+            "https://matrapin.netlify.app",  # For production
+            "http://localhost:8888"  # For local development
+        ]
+    }
+})
 
 # Load language mappings from JSON files
 def load_language_mapping(language):
