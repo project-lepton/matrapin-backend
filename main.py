@@ -24,9 +24,12 @@ def load_language_mapping(language):
     with open(mapping_file, "r", encoding="utf-8") as f:
         return json.load(f)
 
+# For new language mappings, add a new entry here
 # Define script mapping for transliteration
 SCRIPT_MAPPING = {
     "odia": sanscript.ORIYA,
+    "bengali": sanscript.BENGALI,
+    "devanagari": sanscript.DEVANAGARI,
     "telugu": sanscript.TELUGU,
     "tamil": sanscript.TAMIL,
     "malayalam": sanscript.MALAYALAM
